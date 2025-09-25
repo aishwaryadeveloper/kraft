@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
 import { StrategyStudio } from './components/StrategyStudio';
@@ -7,6 +8,7 @@ import { Simulations } from './components/Simulations';
 import { AgentManagement } from './components/AgentManagement';
 import { PerformanceCockpit } from './components/PerformanceCockpit';
 import { AdminControls } from './components/AdminControls';
+import { BrandKit } from './components/BrandKit';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -19,6 +21,8 @@ function App() {
         return <Dashboard />;
       case 'creator':
         return <CreatorStudio />;
+      case 'brandkit':
+        return <BrandKit />;
       case 'simulations':
         return <Simulations />;
       case 'agents':
@@ -33,14 +37,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-      <main className="flex-1 overflow-auto">
-        <div className=" mx-auto px-6 py-8">
-          {renderContent()}
-        </div>
-      </main>
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-gray-50 flex">
+        <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+        <main className="flex-1 overflow-auto">
+          <div className="mx-auto">
+            {renderContent()}
+          </div>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

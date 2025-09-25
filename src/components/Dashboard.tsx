@@ -1,7 +1,11 @@
 import React from 'react';
 import { BarChart3, TrendingUp, Users, Target, Activity, Eye } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export const Dashboard: React.FC = () => {
+  const { getThemeClasses } = useTheme();
+  const themeClasses = getThemeClasses();
+
   const metrics = [
     { title: 'Active Campaigns', value: '12', change: '+2', icon: Target, color: 'blue' },
     { title: 'Total Impressions', value: '2.4M', change: '+15.2%', icon: Eye, color: 'green' },
@@ -35,10 +39,11 @@ export const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className={`min-h-screen ${themeClasses.bg} transition-all duration-500`}>
+      <div className="space-y-6 p-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Campaign Dashboard</h2>
-        <p className="text-gray-600">Monitor and analyze your campaign performance</p>
+        <h2 className={`text-3xl font-bold ${themeClasses.text} mb-2`}>Campaign Dashboard</h2>
+        <p className={`${themeClasses.textSecondary}`}>Monitor and analyze your campaign performance</p>
       </div>
 
       {/* Metrics Grid */}
@@ -46,7 +51,7 @@ export const Dashboard: React.FC = () => {
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div key={index} className={`${themeClasses.cardBg} ${themeClasses.border} border rounded-2xl p-6 ${themeClasses.hover} transition-all duration-300 transform hover:scale-105 ${themeClasses.shadow}`}>
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 bg-${metric.color}-100 rounded-xl`}>
                   <Icon className={`text-${metric.color}-600`} size={24} />
@@ -55,50 +60,50 @@ export const Dashboard: React.FC = () => {
                   {metric.change}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</h3>
-              <p className="text-gray-600 text-sm">{metric.title}</p>
+              <h3 className={`text-2xl font-bold ${themeClasses.text} mb-1`}>{metric.value}</h3>
+              <p className={`${themeClasses.textSecondary} text-sm`}>{metric.title}</p>
             </div>
           );
         })}
       </div>
 
       {/* Performance Chart */}
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className={`${themeClasses.cardBg} ${themeClasses.border} border rounded-2xl p-6`}>
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-gray-900">Performance Overview</h3>
+          <h3 className={`text-xl font-semibold ${themeClasses.text}`}>Performance Overview</h3>
           <div className="flex space-x-2">
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+            <button className={`px-4 py-2 text-sm font-medium ${themeClasses.text} ${themeClasses.cardBg} rounded-xl ${themeClasses.hover} transition-colors`}>
               7D
             </button>
             <button className="px-4 py-2 text-sm font-medium text-white bg-purple-500 rounded-lg hover:bg-purple-600 transition-colors">
               30D
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+            <button className={`px-4 py-2 text-sm font-medium ${themeClasses.text} ${themeClasses.cardBg} rounded-xl ${themeClasses.hover} transition-colors`}>
               90D
             </button>
           </div>
         </div>
-        <div className="h-64 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl flex items-center justify-center">
+        <div className={`h-64 ${themeClasses.gradient} rounded-2xl flex items-center justify-center`}>
           <div className="text-center">
-            <BarChart3 className="text-purple-400 mb-4 mx-auto" size={48} />
-            <p className="text-gray-500">Interactive chart will render here</p>
+            <BarChart3 className={`${themeClasses.textSecondary} mb-4 mx-auto`} size={48} />
+            <p className={`${themeClasses.textSecondary}`}>Interactive chart will render here</p>
           </div>
         </div>
       </div>
 
       {/* Recent Campaigns */}
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-6">Recent Campaigns</h3>
+      <div className={`${themeClasses.cardBg} ${themeClasses.border} border rounded-2xl p-6`}>
+        <h3 className={`text-xl font-semibold ${themeClasses.text} mb-6`}>Recent Campaigns</h3>
         <div className="space-y-4">
           {recentCampaigns.map((campaign, index) => (
-            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+            <div key={index} className={`flex items-center justify-between p-4 ${themeClasses.cardBg} rounded-2xl ${themeClasses.hover} transition-colors`}>
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
                   <Activity className="text-purple-600" size={20} />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">{campaign.name}</h4>
-                  <p className="text-sm text-gray-500">Spend: {campaign.spend}</p>
+                  <h4 className={`font-medium ${themeClasses.text}`}>{campaign.name}</h4>
+                  <p className={`text-sm ${themeClasses.textSecondary}`}>Spend: {campaign.spend}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -115,22 +120,23 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Knowledge Graph Preview */}
-      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">Knowledge Graph Insights</h3>
+      <div className={`${themeClasses.gradient} ${themeClasses.border} border rounded-2xl p-6`}>
+        <h3 className={`text-xl font-semibold ${themeClasses.text} mb-4`}>Knowledge Graph Insights</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white/70 rounded-xl p-4">
-            <h4 className="font-medium text-indigo-900 mb-2">Causal Relationships</h4>
-            <p className="text-sm text-indigo-700">24 connections identified</p>
+          <div className={`${themeClasses.cardBg}/70 rounded-2xl p-4`}>
+            <h4 className={`font-medium ${themeClasses.text} mb-2`}>Causal Relationships</h4>
+            <p className={`text-sm ${themeClasses.textSecondary}`}>24 connections identified</p>
           </div>
-          <div className="bg-white/70 rounded-xl p-4">
-            <h4 className="font-medium text-indigo-900 mb-2">Pattern Recognition</h4>
-            <p className="text-sm text-indigo-700">8 trends detected</p>
+          <div className={`${themeClasses.cardBg}/70 rounded-2xl p-4`}>
+            <h4 className={`font-medium ${themeClasses.text} mb-2`}>Pattern Recognition</h4>
+            <p className={`text-sm ${themeClasses.textSecondary}`}>8 trends detected</p>
           </div>
-          <div className="bg-white/70 rounded-xl p-4">
-            <h4 className="font-medium text-indigo-900 mb-2">Optimization Opportunities</h4>
-            <p className="text-sm text-indigo-700">12 recommendations</p>
+          <div className={`${themeClasses.cardBg}/70 rounded-2xl p-4`}>
+            <h4 className={`font-medium ${themeClasses.text} mb-2`}>Optimization Opportunities</h4>
+            <p className={`text-sm ${themeClasses.textSecondary}`}>12 recommendations</p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
