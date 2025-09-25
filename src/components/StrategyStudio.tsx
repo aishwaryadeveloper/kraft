@@ -37,6 +37,8 @@ export const StrategyStudio: React.FC = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const { getThemeClasses } = useTheme();
+  const themeClasses = getThemeClasses();
 
   const suggestions = [
     'Launch holiday sale campaign with 20% discount targeting millennials',
