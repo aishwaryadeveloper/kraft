@@ -171,8 +171,7 @@ export const StrategyStudio: React.FC = () => {
           {/* Theme Switcher */}
           <div className="flex items-center space-x-2">
             
-              <Sun size={20} />
-            </button>
+          
             <button
               onClick={() => setTheme('dark')}
               className={`p-2 rounded-xl transition-all ${theme === 'dark' ? 'bg-gray-700 text-white' : `${themeClasses.cardBg} ${themeClasses.text}`}`}
