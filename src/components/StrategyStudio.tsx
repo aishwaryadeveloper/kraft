@@ -167,24 +167,6 @@ export const StrategyStudio: React.FC = () => {
               Next-generation AI-powered campaign creation and strategy development
             </p>
           </div>
-          
-          {/* Theme Switcher */}
-          <div className="flex items-center space-x-2">
-            
-          
-            <button
-              onClick={() => setTheme('dark')}
-              className={`p-2 rounded-xl transition-all ${theme === 'dark' ? 'bg-gray-700 text-white' : `${themeClasses.cardBg} ${themeClasses.text}`}`}
-            >
-              <Moon size={20} />
-            </button>
-            <button
-              onClick={() => setTheme('neon')}
-              className={`p-2 rounded-xl transition-all ${theme === 'neon' ? 'bg-gradient-to-r from-cyan-500 to-pink-500 text-white' : `${themeClasses.cardBg} ${themeClasses.text}`}`}
-            >
-              <Zap size={20} />
-            </button>
-          </div>
         </div>
 
         {/* AI Chat Interface */}
