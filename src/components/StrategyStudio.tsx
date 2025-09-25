@@ -150,8 +150,7 @@ export const StrategyStudio: React.FC = () => {
     }
   };
 
-  const themeClasses = getThemeClasses();
-  const currentResponse = getCurrentResponse();
+
 
   return (
     <div className={`min-h-screen transition-all duration-500 ${themeClasses.bg}`}>
