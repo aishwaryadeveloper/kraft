@@ -118,37 +118,6 @@ export const StrategyStudio: React.FC = () => {
     return null;
   };
 
-  const getThemeClasses = () => {
-    switch (theme) {
-      case 'dark':
-        return {
-          bg: 'bg-gray-900',
-          cardBg: 'bg-gray-800',
-          text: 'text-white',
-          textSecondary: 'text-gray-300',
-          border: 'border-gray-700',
-          accent: 'bg-purple-600'
-        };
-      case 'neon':
-        return {
-          bg: 'bg-black',
-          cardBg: 'bg-gray-900',
-          text: 'text-cyan-400',
-          textSecondary: 'text-pink-300',
-          border: 'border-cyan-500',
-          accent: 'bg-gradient-to-r from-cyan-500 to-pink-500'
-        };
-      default:
-        return {
-          bg: 'bg-gray-50',
-          cardBg: 'bg-white',
-          text: 'text-gray-900',
-          textSecondary: 'text-gray-600',
-          border: 'border-gray-200',
-          accent: 'bg-purple-500'
-        };
-    }
-  };
 
 
 
