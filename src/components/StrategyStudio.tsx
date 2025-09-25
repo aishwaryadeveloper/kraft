@@ -19,6 +19,7 @@ import {
   Palette,
   Settings
 } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface SearchQuery {
   id: string;
